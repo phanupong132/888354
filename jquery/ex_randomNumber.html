@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js">
+    </script>
+	<style>
+		body{
+			text-align: center;
+		}
+	</style>
+	<script>
+		function randomNumber() {
+			var number1 = Math.floor((Math.random() * 100) + 1);
+            var number2 = Math.floor((Math.random() * 100) + 1);
+            
+            var sum = number1+number2;
+            $("#sum").val(sum);
+            $("#number").html(number1+" + "+number2+" = ");
+		}
+        function send_answer(){
+            var answer = $("#answer").val();
+            var sum = $("#sum").val();
+            if(answer == sum){
+                $("#result").css("color","green");
+                $("#result").html("That's correct");
+            }else{
+                $("#result").css("color","red");
+                $("#result").html("That's wrong.The answer is" + sum);
+            }
+        }
+	</script>
+</head>
+<body>
+	<h1>Ex - Random Number for Answer</h1>
+	<hr>
+    
+    <div>
+        <button onclick="randomNumber()">Random Number</button>
+    </div>
+
+    <br>
+
+    <div>
+        <span id="number"></span>
+        <input id="sum" type="hidden" value="">
+        <span><input type="text" id="answer"></span>
+    </div>
+	
+	<br>
+    
+    <div>
+		<button onclick="send_answer()">Send Answer</button>
+	</div>
+	<p>Result : <span id="result"></span></p>
+</body>
+</html>
